@@ -2246,7 +2246,25 @@ function displaySakeInfo() {
     container.innerHTML = html;
     lucide.createIcons();
 }
+// チューハイ情報表示
+function displayChuhaiInfo() {
+    const container = document.getElementById('chuhai-info');
+    let html = `
+        <h3>チューハイについて</h3>
+        <p>${chuhaiInfo.description}</p>
 
+        <h4>ベースとなる蒸留酒</h4>
+        <ul>
+            ${chuhaiInfo.baseSpirits.map(spirit => `
+                <li>
+                    <strong>${spirit.name}:</strong> ${spirit.description}
+                    <br>味わい: ${spirit.tasteProfie}
+                </li>
+            `).join('')}
+        </ul>
+    `;
+    container.innerHTML = html;
+}
 // 焼酎情報表示
 function displayShochuInfo() {
     const container = document.getElementById('shochu-info');
