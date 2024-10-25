@@ -1,0 +1,407 @@
+/* カラーパレット */
+:root {
+    --color-background: #1a1a1a;
+    --color-surface: #2d2d2d;
+    --color-surface-light: #3d3d3d;
+    --color-primary: #7c3aed;
+    --color-primary-light: #a78bfa;
+    --color-secondary: #f59e0b;
+    --color-text: #ffffff;
+    --color-text-muted: #e0e0e0;
+    --color-text-dimmed: #94a3b8;
+    --color-success: #22c55e;
+    --color-error: #ef4444;
+    --color-warning: #f59e0b;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ベーススタイル */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* メインコンテナ */
+#app {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* ナビゲーション */
+#top-nav {
+    background: var(--color-surface);
+    padding: 0.75rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#top-nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    background: var(--color-surface-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+#top-nav a:hover {
+    background: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* カード */
+.wine-card, .beer-card, .chuhai-card {
+    background: var(--color-surface);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease;
+}
+
+.wine-card:hover, .beer-card:hover, .chuhai-card:hover {
+    transform: translateY(-4px);
+}
+
+.wine-card p, .chuhai-card p {
+    margin: 0.25rem 0;
+}
+
+/* 商品カード内の画像 */
+.wine-card img, .chuhai-card img {
+    width: 100%;
+    max-width: 200px;
+    height: 260px;
+    object-fit: contain;
+    margin: 0 auto 1rem;
+    display: block;
+    border-radius: 0.5rem;
+    background: #ffffff;
+}
+
+/* フォーム要素 */
+select, input[type="text"], input[type="range"] {
+    background: var(--color-surface-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+select:focus, input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-light);
+}
+
+/* アルコール度数スライダー */
+.range-container input[type="range"] {
+    width: 200px;
+    max-width: 100%;
+}
+
+/* ボタン */
+button {
+    background: var(--color-primary);
+    color: var(--color-text);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* グリッドレイアウト */
+#wine-results, #chuhaiList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+/* 見出し */
+h1, h2, h3, h4 {
+    color: var(--color-text);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary-light);
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+/* テーブル */
+.comparison-table {
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-surface);
+}
+
+.comparison-table th {
+    background: var(--color-primary);
+    color: var(--color-text);
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.comparison-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-surface-light);
+    line-height: 1.6;
+    vertical-align: top;
+}
+
+.comparison-table tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tr:nth-child(even) {
+    background: var(--color-surface-light);
+}
+
+.comparison-table strong {
+    color: var(--color-primary-light);
+}
+
+/* トップに戻るボタン */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--color-primary);
+    color: var(--color-text);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-2px);
+}
+
+/* 年齢制限の注意書き */
+.age-restriction {
+    background: var(--color-error);
+    color: var(--color-text);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* モーダル */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--color-surface);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    width: 90%;
+    padding: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    color: var(--color-text-muted);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--color-text);
+}
+
+/* 情報セクション */
+.info-section {
+    background: var(--color-surface);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+.info-section ul {
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+}
+
+.info-section li {
+    margin-bottom: 0.5rem;
+}
+
+.scene-explanation {
+    margin-bottom: 2rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    #app {
+        padding: 1rem;
+    }
+    
+    #top-nav {
+        grid-template-columns: repeat(2, 1fr);
+        max-height: 300px;
+    }
+    
+    .wine-card img, .chuhai-card img {
+        width: 40vw;
+        max-width: 160px;
+        height: 200px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 1rem;
+    }
+
+    .comparison-table {
+        margin: 1rem -1rem;
+        border-radius: 0;
+    }
+    
+    .comparison-table table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.75rem;
+        font-size: 0.9rem;
+        min-width: 120px;
+    }
+}
+
+/* カスタムスクロールバー */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-surface-light);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}

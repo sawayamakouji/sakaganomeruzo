@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リカー教育アプリ</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <nav id="top-nav">
+            <a href="#" data-screen="home-screen">
+                <i class="fas fa-home"></i>
+                ホーム
+            </a>
+            <a href="#" data-screen="beer-screen">
+                <i data-lucide="beer"></i>
+                ビール
+            </a>
+            <a href="#" data-screen="wine-screen">
+                <i data-lucide="wine"></i>
+                ワイン
+            </a>
+            <a href="#" data-screen="sake-screen">
+                <i data-lucide="glass-water"></i>
+                日本酒
+            </a>
+            <a href="#" data-screen="chuhai-screen">
+                <i data-lucide="glass-water"></i>
+                チューハイ
+            </a>
+            <a href="#" data-screen="shochu-screen">
+                <i data-lucide="wine"></i>
+                焼酎
+            </a>
+            <a href="#" data-screen="whisky-screen">
+                <i data-lucide="wine"></i>
+                ウイスキー
+            </a>
+        </nav>
+        
+        <h1>リカー教育アプリ</h1>
+        
+        <!-- ホーム画面 -->
+        <div id="home-screen">
+            <h2><i class="fas fa-info-circle"></i>【お知らせ】</h2>
+            <div id="discount-info"></div>
+        </div>
+
+        <!-- ビール画面 -->
+        <div id="beer-screen" style="display:none;">
+            <h2><i data-lucide="beer"></i>【ビール】</h2>
+            <div id="beer-info"></div>
+        </div>
+
+        <!-- ワイン画面 -->
+        <div id="wine-screen" style="display:none;">
+            <h2><i data-lucide="wine"></i>【ワイン】</h2>
+            <div id="wine-info"></div>
+            <div id="wine-finder">
+                <h3><i data-lucide="search"></i>【ワインを探す】</h3>
+                <div id="wine-filters">
+                    <select id="wine-type">
+                        <option value="">全てのタイプ</option>
+                        <option value="赤ワイン">赤ワイン</option>
+                        <option value="白ワイン">白ワイン</option>
+                        <option value="ロゼワイン">ロゼワイン</option>
+                        <option value="スパークリングワイン">スパークリングワイン</option>
+                    </select>
+                    <select id="wine-origin">
+                        <option value="">全ての産地</option>
+                        <option value="国産">国産</option>
+                        <option value="輸入">輸入</option>
+                        <option value="道産">道産</option>
+                    </select>
+                    <select id="wine-taste">
+                        <option value="">全ての味わい</option>
+                       
+                            <option value="甘口">甘口</option>
+                            <option value="中口">中口</option>
+                            <option value="辛口">辛口</option>
+                        </optgroup>
+                        
+                            <option value="ライトボディ">ライトボディ</option>
+                            <option value="ミディアムボディ">ミディアムボディ</option>
+                            <option value="フルボディ">フルボディ</option>
+                        </optgroup>
+                    </select>
+                    <select id="wine-price">
+                        <option value="">価格はこだわらない</option>
+                        <option value="700">～700円</option>
+                        <option value="1000">～1000円</option>
+                        <option value="1500">～1500円</option>
+                        <option value="2000">～2000円</option>
+                    </select>
+                    <button id="wine-search">検索</button>
+                </div>
+                <div id="wine-results"></div>
+            </div>
+        </div>
+
+        <!-- 日本酒画面 -->
+        <div id="sake-screen" style="display:none;">
+            <h2><i data-lucide="glass-water"></i>【日本酒】</h2>
+            <div id="sake-info"></div>
+        </div>
+
+        <!-- チューハイ画面 -->
+        <div id="chuhai-screen" style="display:none;">
+            <h2><i data-lucide="glass-water"></i>【チューハイ】</h2>
+            <div id="chuhai-info"></div>
+            <div id="chuhai-finder">
+                <h3><i data-lucide="search"></i>【チューハイを探す】</h3>
+                <div id="chuhai-filters">
+                    <select id="maker">
+                        <option value="">メーカーを選択</option>
+                    </select>
+                    <select id="sugarContent">
+                        <option value="">無糖か有糖かどちらでも良い</option>
+                        <option value="有糖">有糖</option>
+                        <option value="無糖">無糖</option>
+                    </select>
+                    <div class="range-container">
+                        <label>
+                            最小アルコール度数: <span id="minAlcoholValue">3</span>%
+                            <input type="range" id="minAlcohol" min="3" max="9" step="1" value="3">
+                        </label>
+                    </div>
+                    <div class="range-container">
+                        <label>
+                            最大アルコール度数: <span id="maxAlcoholValue">9</span>%
+                            <input type="range" id="maxAlcohol" min="3" max="9" step="1" value="9">
+                        </label>
+                    </div>
+                    <select id="scene">
+                        <option value="">いつ飲む？</option>
+                        <option value="食中">食中</option>
+                        <option value="食後">食後</option>
+                        <option value="リラックスタイム">リラックスタイム</option>
+                    </select>
+                    <input type="text" id="searchTerm" placeholder="キーワード検索">
+                    <div class="button-group">
+                        <button id="chuhai-search">検索</button>
+                        <button id="chuhai-reset">リセット</button>
+                    </div>
+                </div>
+                <div id="sortControls">
+                    <label for="sortBy">並び替え:</label>
+                    <select id="sortBy">
+                        <option value="name">商品名</option>
+                        <option value="maker">メーカー</option>
+                        <option value="alcohol">アルコール度数</option>
+                    </select>
+                    <button id="sortOrder"><i class="fas fa-sort-amount-down"></i></button>
+                </div>
+                <div id="chuhai-results">
+                    <h4>検索結果: <span id="resultCount">0</span>件</h4>
+                    <div id="chuhaiList"></div>
+                </div>
+            </div>
+            <div id="sceneExplanations"></div>
+        </div>
+
+        <!-- 焼酎画面 -->
+        <div id="shochu-screen" style="display:none;">
+            <h2><i data-lucide="wine"></i>【焼酎】</h2>
+            <div id="shochu-info"></div>
+        </div>
+
+        <!-- ウイスキー画面 -->
+        <div id="whisky-screen" style="display:none;">
+            <h2><i data-lucide="wine"></i>【ウイスキー】</h2>
+            <div id="whisky-info"></div>
+        </div>
+    </div>
+
+    <!-- モーダル -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Lucideの初期化 -->
+    <script>
+        lucide.createIcons();
+    </script>
+    <!-- メインのJavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
